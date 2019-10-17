@@ -1,17 +1,34 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>
-            Home
+        <ion-title class="ion-align-items-center">
+            DS2TI-Rastreamento
         </ion-title>
+        <ion-button slot="end">
+        </ion-button>
     </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
     <div id="map_canvas">
-        <button ion-button (click)="onButtonClick($event)">Start demo</button>
+        <div class="box">
+            <div class="camInicio">
+                <button ion-menu-button class="btnMenu" (click)="abreMenu($event)">
+         <ion-icon name="menu"></ion-icon>
+        </button>
+            </div>
+            <div class="barSuperior">
+            </div>
+            <div class="camFim">
+                <ion-avatar class="imgAvatar">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                </ion-avatar>
+            </div>
+        </div>
+
+
     </div>
     <!-- <ion-card class="welcome-card">
       <img src="/assets/shapes.svg" alt="" />

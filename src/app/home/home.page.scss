@@ -3,6 +3,49 @@
     overflow: hidden;
 }
 
+%sombra {
+    -webkit-box-shadow: 3px 4px 2px 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 3px 4px 2px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 3px 4px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
 #map_canvas {
-    height: 98%;
+    height: 100%;
+}
+
+.box {
+    margin: auto;
+    width: 95%;
+    display: flex;
+    justify-content: flex-start;
+    width: 95%;
+    top: 5%;
+    .camInicio {
+        //null 
+        float: left;
+        .btnMenu {
+            min-width: 32px;
+            min-height: 32px;
+            border-radius: 15px;
+            border: 1px solid black;
+            left: 10%;
+            @extend %sombra;
+            ion-icon {
+                font-size: 32px;
+            }
+        }
+    }
+    .barSuperior {
+        //null
+        margin: auto;
+    }
+    .camFim {
+        //null
+        float: right;
+        .imgAvatar {
+            height: 40px;
+            width: 40px;
+            @extend %sombra;
+        }
+    }
 }

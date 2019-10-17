@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GoogleMaps, GoogleMap, Environment, GoogleMapsMapTypeId, GoogleMapOptions, MyLocation, Marker, GoogleMapsAnimation, GoogleMapsEvent } from '@ionic-native/google-maps/ngx'; 
-import { Platform, ToastController } from '@ionic/angular';
+import { Platform, ToastController, MenuController } from '@ionic/angular';
 import {mapStyle} from './mapStyle';
 @Component({
   selector: 'app-home',
@@ -11,7 +11,8 @@ export class HomePage {
 map:GoogleMap;
 noturno = false;
   constructor(private platform:Platform,
-    public toastCtrl:ToastController) {}
+    public toastCtrl:ToastController,
+    private menu: MenuController) {}
 async ngOnInit() {
   await this.platform.ready();
   await this.loadMap();
@@ -20,10 +21,10 @@ async ngOnInit() {
 
 async loadMap() {
 
-  // Environment.setEnv({
-  //   'API_KEY_FOR_BROWSER_DEBUG':'AIzaSyAKobm-HSMyLWMgEc9JtvS3kpDayjNu2vY',
-  //   'API_KEY_FOR_BROWSER_RELEASE':'AIzaSyAKobm-HSMyLWMgEc9JtvS3kpDayjNu2vY'
-  //  });
+  Environment.setEnv({
+    'API_KEY_FOR_BROWSER_DEBUG':'AIzaSyAKobm-HSMyLWMgEc9JtvS3kpDayjNu2vY',
+    'API_KEY_FOR_BROWSER_RELEASE':'AIzaSyAKobm-HSMyLWMgEc9JtvS3kpDayjNu2vY'
+   });
 
   let lStyle = []
   if (this.noturno === true || this.isNight()) {
@@ -202,7 +203,13 @@ isNight() {
   return (time > 5 && time < 19) ? false : true;
 }
 public onButtonClick(b){
-  this.loadMap();
+  //this.loadMap();
+  if (!this.menu.isOpen) {
+    this.menu.open;
+  }
+  this.menu.open()
 }
-
+public abreMenu(d){
+  this.menu.open();
+}
 }
