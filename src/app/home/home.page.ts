@@ -10,6 +10,8 @@ import {mapStyle} from './mapStyle';
 export class HomePage {
 map:GoogleMap;
 noturno = false;
+public imagePAth:string="";
+public lStyle={};
   constructor(private platform:Platform,
     public toastCtrl:ToastController,
     private menu: MenuController) {}

@@ -1,6 +1,27 @@
-.welcome-card img {
-    max-height: 35vh;
-    overflow: hidden;
+@mixin breakpoint($class) {
+    @if $class==xs {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+    @else if $class==sm {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+    @else if $class==md {
+        @media (min-width: 992px) {
+            @content;
+        }
+    }
+    @else if $class==lg {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Breakpoint mixin supports: xs, sm, md, lg";
+    }
 }
 
 %sombra {
@@ -12,12 +33,28 @@
 %btnMenu {
     min-width: 32px;
     min-height: 32px;
-    border-radius: 15px;
+    width: 32px;
+    height: 32px;
+    @include breakpoint(sm) {
+        width: 40px;
+        height: 40px;
+    }
+    @include breakpoint(md) {
+        width: 48px;
+        height: 48px;
+    }
+    @include breakpoint(lg) {
+        width: 64px;
+        height: 64px;
+    }
+    border-radius: 32px;
     border: 1px solid black;
-    left: 10%;
+    padding: 1px;
     @extend %sombra;
     ion-icon {
-        font-size: 32px;
+        // null    font-size: 32px;
+        min-width: 28px;
+        min-height: 28px;
     }
 }
 
@@ -27,12 +64,16 @@
 
 .box {
     margin: auto;
+    //background-color: aquamarine;
     display: flex;
-    justify-content: flex-start;
-    width: 95%;
-    top: 5%;
+    align-items: center; //centraliza horizontalmente
+    justify-content: center; //cetraliza verticalmente
+    width: 86vw;
+    min-width: 320px;
+    top: 8vh;
     .camInicio {
         //null 
+        // background-color: silver;
         float: left;
         .btnMenu {
             @extend %btnMenu;
@@ -40,18 +81,24 @@
     }
     .barSuperior {
         //null
+        //background-color: yellow;
         margin: auto;
-        display: flex;
+        // display: flex;
         .texto {
-            font: 900 1.1em cookie, cursive;
+            font-size: 1.8rem;
+            //color: rgb(109, 108, 108);
             mix-blend-mode: difference;
-            text-align: center;
-            filter: drop-shadow(3px 4px 2px 1px rgba(0, 0, 0, 0.3));
+            line-height: 0px;
+            margin: 0px;
+            text-shadow: 2px 2px 4px #ffffff90;
+            // text-align: center;
+            // filter: drop-shadow(3px 4px 2px 1px rgba(0, 0, 0, 0.3));
         }
     }
     .camFim {
         //null
         float: right;
+        //  background-color: yellowgreen;
         // .imgAvatar {
         //     height: 40px;
         //     width: 40px;
@@ -59,6 +106,15 @@
         // }
         .btnMenu {
             @extend %btnMenu;
+        }
+        div.btnMenu {
+            background-color: #DDDDDD;
+            background-image: url("https://visualpharm.com/assets/189/Person-595b40b65ba036ed117d21b8.svg");
+            background-position: center;
+            img {
+                height: 100%;
+                width: 100%;
+            }
         }
     }
 }
